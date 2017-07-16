@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import App from 'app';
+import Dashboard from 'containers/Dashboard';
+import UserProfile from 'containers/UserProfile';
+
+const router = (
+  <Router>
+    <App>
+      <Switch>
+        <Route exact path='/' component={Dashboard} />
+        <Route path="/user/:userid" component={UserProfile} />
+      </Switch>
+    </App>
+  </Router>
+)
+
+ReactDOM.render(router, document.getElementById('app'))
