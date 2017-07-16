@@ -173,6 +173,21 @@ module.exports = {
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true,
+
+          presets: ["es2015", "stage-0", "react"],
+          plugins: [
+              [
+                  "react-css-modules",
+                  {
+                      "webpackHotModuleReloading": true,
+                      "filetypes": {
+                          ".scss": {
+                            "syntax": "postcss-scss"
+                          }
+                      }
+                  }
+              ]
+          ]
         },
       },
       // "postcss" loader applies autoprefixer to our CSS.
@@ -188,6 +203,8 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
+              modules: true,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
             },
           },
           {
@@ -211,22 +228,7 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-            require.resolve('style-loader'),
-            {
-              loader: require.resolve('css-loader'),
-              options: {
-                importLoaders: 1
-              },
-            },
-            {
-                loader: require.resolve('sass-loader')
-            }
-        ]
-      },
+      }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],
