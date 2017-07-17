@@ -1,7 +1,7 @@
 import * as actionTypes from "actions/actionTypes";
 import { reducerActionError } from "reducers";
 
-const initialState = { name: "" };
+const initialState = { name: "BisonDev" };
 
 export default function organizationReducer(state, action) {
   if (typeof state === "undefined") {

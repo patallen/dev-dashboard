@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import App from "app";
-import Dashboard from "containers/TeamPage";
+import TeamPage from "containers/TeamPage";
 import UserProfile from "containers/UserProfile";
 import allReducers from "./reducers";
 
@@ -15,17 +15,16 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-const router = (
+const Routes = () =>
   <Provider store={store}>
     <Router>
       <App>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" component={TeamPage} />
           <Route path="/user/:userid" component={UserProfile} />
         </Switch>
       </App>
     </Router>
-  </Provider>
-);
+  </Provider>;
 
-ReactDOM.render(router, document.getElementById("app"));
+ReactDOM.render(<Routes />, document.getElementById("app"));
