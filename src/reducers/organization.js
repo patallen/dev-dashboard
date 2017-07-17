@@ -1,17 +1,23 @@
+import * as actionTypes from "actions/actionTypes";
+import { reducerActionError } from "reducers";
+
 const initialState = { name: "" };
 
-const organizationReducer = (state, action) => {
+export default function organizationReducer(state, action) {
   if (typeof state === "undefined") {
     return initialState;
   }
 
-  let newState = {};
+  let newState;
   switch (action.type) {
-    case "SET_ORGANIZATION":
-      newState = action.payload;
+    case actionTypes.SET_ORGANIZATION:
+      newState = {
+        ...state,
+        ...action.payload
+      };
       break;
+    default:
+      reducerActionError(action.type, organizationReducer);
   }
   return newState;
-};
-
-export default organizationReducer;
+}
