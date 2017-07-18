@@ -12,11 +12,11 @@ import "./styles.scss";
 
 class Header extends Component {
   render() {
-    let { name: organizationName } = this.props.organization;
+    let { organization } = this.props;
     return (
       <NavigationHeader>
-        <OrgBadge>
-          {organizationName}
+        <OrgBadge organization={organization}>
+          {organization.name}
         </OrgBadge>
         <Navigation rightAlign={true}>
           <NavItem>Nav Item 1</NavItem>

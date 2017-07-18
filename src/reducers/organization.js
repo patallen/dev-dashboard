@@ -26,7 +26,7 @@ export default function organizationReducer(state, action) {
       newState = {
         ...state,
         isFetching: false,
-        name: action.payload.organization
+        ...action.payload.organization
       };
       break;
     default:

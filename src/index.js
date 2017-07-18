@@ -13,6 +13,12 @@ import UserProfile from "containers/UserProfile";
 import allReducers from "./reducers";
 
 import { fetchOrganization } from "./actions/organization";
+import { orgQuery, queryGithub } from "apis/github";
+
+window.orgQuery = () => {
+  let query = orgQuery("pallets");
+  return queryGithub(query);
+};
 
 const store = createStore(
   allReducers,

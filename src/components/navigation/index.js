@@ -6,13 +6,18 @@ export const NavigationHeader = props => {
     <header styleName="header">
       {props.children}
     </header>
-  )
-}
+  );
+};
 
 export const OrgBadge = props => {
+  let org = props.organization;
+  let image = org.avatarUrl ? <img src={org.avatarUrl} /> : null;
   return (
     <div styleName="org-badge">
-      {props.children}
+      {image}
+      <a href={org.url}>
+        {org.name}
+      </a>
     </div>
   );
 };
@@ -20,7 +25,7 @@ export const OrgBadge = props => {
 export const Navigation = props => {
   let styles = "nav";
   if (props.rightAlign) {
-    styles += " nav-right-aligned"
+    styles += " nav-right-aligned";
   }
 
   return (

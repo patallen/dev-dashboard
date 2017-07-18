@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import { orgQuery, queryGithub } from "../apis/github";
 
 function requestOrganization(organization) {
   return {
@@ -17,10 +18,10 @@ function receiveOrganization(organization) {
 export function fetchOrganization(organization) {
   return function(dispatch) {
     dispatch(requestOrganization(organization));
-    return new Promise(resolve => {
-      resolve({ organization });
-    }).then(
-      res => dispatch(receiveOrganization(res)),
+    return queryGithub(orgQuery(organization)).then(
+      res => {
+        dispatch(receiveOrganization(res.data.data));
+      },
       error => console.log("An error occured.", error)
     );
   };
