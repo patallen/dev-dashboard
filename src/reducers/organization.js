@@ -1,7 +1,7 @@
 import * as actionTypes from "actions/actionTypes";
 import { reducerActionError } from "reducers";
 
-const initialState = { name: "BisonDev" };
+const initialState = { name: "" };
 
 export default function organizationReducer(state, action) {
   if (typeof state === "undefined") {
@@ -14,6 +14,19 @@ export default function organizationReducer(state, action) {
       newState = {
         ...state,
         ...action.payload
+      };
+      break;
+    case actionTypes.REQUEST_ORGANIZATION:
+      newState = {
+        ...state,
+        isFetching: true
+      };
+      break;
+    case actionTypes.RECEIVE_ORGANIZATION:
+      newState = {
+        ...state,
+        isFetching: false,
+        name: action.payload.organization
       };
       break;
     default:
