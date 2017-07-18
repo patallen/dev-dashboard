@@ -4,7 +4,7 @@ import "./styles.scss";
 
 class TeamPage extends Component {
   render() {
-    return <div styleName="div-style">Dashboard</div>;
+    return <div>Team Page</div>;
   }
 }
 

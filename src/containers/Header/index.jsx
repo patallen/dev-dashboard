@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { OrgBadge, Navigation, NavItem } from "../../components/navigation";
+
+import {
+  NavigationHeader,
+  OrgBadge,
+  Navigation,
+  NavItem
+} from "components/navigation";
+
 import "./styles.scss";
 
 class Header extends Component {
   render() {
     let { name: organizationName } = this.props.organization;
     return (
-      <header>
+      <NavigationHeader>
         <OrgBadge>
           {organizationName}
         </OrgBadge>
-        <Navigation>
+        <Navigation rightAlign={true}>
           <NavItem>Nav Item 1</NavItem>
           <NavItem>Nav Item 2</NavItem>
           <NavItem>Nav Item 3</NavItem>
         </Navigation>
-      </header>
+      </NavigationHeader>
     );
   }
 }

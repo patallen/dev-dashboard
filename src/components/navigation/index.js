@@ -1,6 +1,14 @@
 import React from "react";
 import "./styles.scss";
 
+export const NavigationHeader = props => {
+  return (
+    <header styleName="header">
+      {props.children}
+    </header>
+  )
+}
+
 export const OrgBadge = props => {
   return (
     <div styleName="org-badge">
@@ -10,8 +18,13 @@ export const OrgBadge = props => {
 };
 
 export const Navigation = props => {
+  let styles = "nav";
+  if (props.rightAlign) {
+    styles += " nav-right-aligned"
+  }
+
   return (
-    <nav>
+    <nav styleName={styles}>
       {props.children}
     </nav>
   );
