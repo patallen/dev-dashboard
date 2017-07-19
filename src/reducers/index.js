@@ -1,14 +1,9 @@
 import { combineReducers } from "redux";
 
 import organizationReducer from "reducers/organization";
+import teamReducer from "reducers/team";
 
 export default combineReducers({
-  organization: organizationReducer
+  organization: organizationReducer,
+  team: teamReducer
 });
-
-export class ReducerError extends Error {}
-export function reducerActionError(actionType, reducer) {
-  throw new Error(
-    `"${actionType}" is not a valid action type for reducer ${reducer.name}.`
-  );
-}

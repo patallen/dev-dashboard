@@ -27,13 +27,16 @@ export const orgQuery = (orgName, callback) => {
   return { query };
 };
 
-export const membersQuery = (orgName, first) => {
+export const membersQuery = orgName => {
   let query = `{
     organization(login: "${orgName}") {
-      members(first: ${first}) {
+      members(first: 20) {
         nodes {
           name
           avatarUrl
+          login
+          email
+          url
         }
       }
     }
