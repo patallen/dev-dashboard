@@ -13,12 +13,7 @@ import UserProfile from "containers/UserProfile";
 import allReducers from "./reducers";
 
 import { fetchOrganization } from "./actions/organization";
-import { orgQuery, queryGithub } from "apis/github";
-
-window.orgQuery = () => {
-  let query = orgQuery("pallets");
-  return queryGithub(query);
-};
+import { fetchTeamMembers } from "./actions/team";
 
 const store = createStore(
   allReducers,
@@ -26,12 +21,16 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 );
 
-const fetchOrg = organization => {
-  store.dispatch(fetchOrganization(organization));
+window.initializeState = organization => {
+  // Set up initial state using "pallets" organization.
+  // This is bound to window, so just call it in the console with
+  // another organization `login` name
+  store.dispatch(fetchOrganization(organization)).then(() => {
+    store.dispatch(fetchTeamMembers(organization));
+  });
 };
 
-window.fetchOrg = fetchOrg;
-
+window.initializeState("pallets");
 const Routes = () =>
   <Provider store={store}>
     <Router>
