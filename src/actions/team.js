@@ -19,7 +19,10 @@ export function fetchTeamMembers(organization) {
   return function(dispatch) {
     dispatch(requestTeamMembers(organization));
     return queryGithub(membersQuery(organization)).then(
-      res => dispatch(receiveTeamMembers(res.data)),
+      res => {
+        let members = res.data.data.organization.members.nodes;
+        dispatch(receiveTeamMembers({ members }));
+      },
       error => console.log("An error occured.", error)
     );
   };

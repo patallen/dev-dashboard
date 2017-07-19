@@ -37,6 +37,7 @@ export const membersQuery = orgName => {
           login
           email
           url
+          id
         }
       }
     }
