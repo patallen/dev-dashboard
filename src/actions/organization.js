@@ -19,9 +19,7 @@ export function fetchOrganization(organization) {
   return function(dispatch) {
     dispatch(requestOrganization(organization));
     return queryGithub(orgQuery(organization)).then(
-      res => {
-        dispatch(receiveOrganization(res.data.data));
-      },
+      res => dispatch(receiveOrganization(res.data.data)),
       error => console.log("An error occured.", error)
     );
   };

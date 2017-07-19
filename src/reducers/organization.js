@@ -1,7 +1,10 @@
 import * as actionTypes from "actions/actionTypes";
 import { reducerActionError } from "reducers";
 
-const initialState = { name: "" };
+const initialState = {
+  name: "",
+  isFetching: false
+};
 
 export default function organizationReducer(state, action) {
   if (typeof state === "undefined") {
@@ -30,7 +33,7 @@ export default function organizationReducer(state, action) {
       };
       break;
     default:
-      reducerActionError(action.type, organizationReducer);
+      return state;
   }
   return newState;
 }
