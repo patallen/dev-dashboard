@@ -11,7 +11,7 @@ export const NavigationHeader = props => {
 
 export const OrgBadge = props => {
   let org = props.organization;
-  let image = org.avatarUrl ? <img src={org.avatarUrl} /> : null;
+  let image = org.avatarUrl ? <img alt="avatar" src={org.avatarUrl} /> : null;
   return (
     <div styleName="org-badge">
       {image}

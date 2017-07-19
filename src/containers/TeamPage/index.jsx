@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+import MembersSection from "../../components/team/MembersSection";
 import "./styles.scss";
 
 class TeamPage extends Component {
   render() {
-    return <div>Team Page</div>;
+    let { members, isFetching } = this.props;
+    return (
+      <div>
+        <MembersSection members={members} isFetching={isFetching} />
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
-  let { organization } = state;
-  return { organization };
+  let { members, isFetching } = state.team;
+  return { members, isFetching };
 }
 
 export default connect(mapStateToProps)(TeamPage);

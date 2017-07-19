@@ -1,5 +1,5 @@
 import React from "react";
 
-const Loader = () => <img src={"../../../assets/Spinner.gif"} />;
+const Loader = () => <img alt="loader" src={"../../../assets/Spinner.gif"} />;
 
 export default Loader;

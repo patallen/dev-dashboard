@@ -1,5 +1,4 @@
 import * as actionTypes from "actions/actionTypes";
-import { reducerActionError } from "reducers";
 
 const initialState = {
   members: [],
@@ -23,7 +22,7 @@ export default function teamReducer(state, action) {
       newState = {
         ...state,
         isFetching: false,
-        ...action.payload.members
+        ...action.payload
       };
       break;
     default:
