@@ -1,39 +1,16 @@
-# Dev Organization Dashboard
+## Dev Dashboard
 
-## Outline
+### Getting Running
+1. `$ yarn install` to get set up.
+1. `$ yarn start` to start the webserver & file watcher.
+1. Navigate to http://localhost:3000 to view.
 
-### Team Page
-  - [ ] Team Members
-    - [ ] Member Profile Picture
-    - [ ] Name / Summary
-    - [ ] Links
-  - [ ] Team Graph
-  - [ ] Top Contributors
-  - [ ] Commits Section
-  - [ ] Repos Section
-  
-### Member Page
-  - [ ] Current Active Branch / Feature
-  - [ ] Recent Commits
-  - [ ] Graph Showing Commits per Branch / Feature
-  - [ ] Pull Requests
-  - [ ] Code Reviews
+In order to use the github api, you need to have a `secrets.js` file in the top level of the `src` folder that contains the following:
 
-### Features Page:
-  - [ ] Current Features
-    - [ ] Feature Component
-      - [ ] Feature Name
-      - [ ] Members Involved (Member Profile Pictures)
-  - [ ] Completed Features
-      
-### Feature Page
-  - [ ] Goals and Mockups
-  - [ ] Current Active Branches
-    - [ ] Members working on branch
-  - [ ] Recent Commits
-  - [ ] Deadline / Status
-  - [ ] Aggregated Notes/Outline/Docs
-    - [ ] Integrations (Trello, Google Docs, Github)
-  - [ ] Pull Requests
+```javascript
+export const githubSecret = "<Your GitHub API Key>";
+```
 
+Follow this walkthough to generate a personal access token:
 
+https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
