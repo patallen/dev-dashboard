@@ -1,44 +1,36 @@
+import styled from 'styled-components';
 import React from "react";
-import "./styles.scss";
 
-export const NavigationHeader = props => {
-  return (
-    <header styleName="header">
-      {props.children}
-    </header>
-  );
-};
+export const NavigationHeader = styled.div`
+  color: white;
+  padding: 0 10px;
+  height: 60px;
+  width: 100%;
+  background: #24292e;
+`;
 
-export const OrgBadge = props => {
-  let org = props.organization;
-  let image = org.avatarUrl ? <img alt="avatar" src={org.avatarUrl} /> : null;
-  return (
-    <div styleName="org-badge">
-      {image}
-      <a href={org.url}>
-        {org.name}
-      </a>
-    </div>
-  );
-};
+export const Navigation = styled.nav`
+  color: rgba(255, 255, 255, .75);
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  flex: 2;
+  float: ${ ({ floatContent }) => floatContent ? floatContent : 'none' };
+`;
 
-export const Navigation = props => {
-  let styles = "nav";
-  if (props.rightAlign) {
-    styles += " nav-right-aligned";
+export const NavItem = styled.div`
+  padding: 0 10px;
+  cursor: pointer;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  flex: 1;
+  max-width: 120px;
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
   }
-
-  return (
-    <nav styleName={styles}>
-      {props.children}
-    </nav>
-  );
-};
-
-export const NavItem = props => {
-  return (
-    <div styleName="nav-item">
-      {props.children}
-    </div>
-  );
-};
+`;

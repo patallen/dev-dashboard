@@ -1,19 +1,28 @@
 import React from "react";
+import styled from 'styled-components';
 
-import MemberBox from "../MemberBox";
-import Loader from "../../Loader";
-import "./styles.scss";
+import MemberBox from "components/team/MemberBox";
+import Loader from "components/Loader";
+
+const MemberSectionWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  flex-wrap: wrap;
+`;
 
 const MembersSection = props => {
   let { members, isFetching } = props;
+
   let memberBoxes = members.map(member =>
     <MemberBox key={member.id} {...member} />
   );
-  let display = isFetching ? <Loader /> : memberBoxes;
+
   return (
-    <div styleName="members-section">
-      {display}
-    </div>
+    <MemberSectionWrapper>
+      { isFetching ? <Loader /> : memberBoxes }
+    </MemberSectionWrapper>
   );
 };
 

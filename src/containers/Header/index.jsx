@@ -1,29 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import PageHeader from 'components/PageHeader';
+import Content from "components/Content";
+import OrgBadge from "components/OrgBadge";
 import {
   NavigationHeader,
-  OrgBadge,
   Navigation,
   NavItem
 } from "components/navigation";
-
-import "./styles.scss";
+import { Flex } from 'components/layout';
 
 class Header extends Component {
   render() {
     let { organization } = this.props;
     return (
-      <NavigationHeader>
-        <OrgBadge organization={organization}>
-          {organization.name}
-        </OrgBadge>
-        <Navigation rightAlign={true}>
-          <NavItem>Nav Item 1</NavItem>
-          <NavItem>Nav Item 2</NavItem>
-          <NavItem>Nav Item 3</NavItem>
-        </Navigation>
-      </NavigationHeader>
+      <PageHeader>
+        <Content>
+          <Flex>
+            <OrgBadge organization={organization} />
+          </Flex>
+          <Flex flex={2}>
+            <Navigation floatContent="right">
+              <NavItem>Nav Item 1</NavItem>
+              <NavItem>Nav Item 2</NavItem>
+              <NavItem>Nav Item 3</NavItem>
+            </Navigation>
+          </Flex>
+        </Content>
+      </PageHeader>
     );
   }
 }

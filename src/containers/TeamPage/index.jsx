@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import MembersSection from "../../components/team/MembersSection";
-import "./styles.scss";
 
 class TeamPage extends Component {
   render() {
     let { members, isFetching } = this.props;
     return (
-      <div>
-        <MembersSection members={members} isFetching={isFetching} />
-      </div>
+      <MembersSection members={members} isFetching={isFetching} />
     );
   }
 }
