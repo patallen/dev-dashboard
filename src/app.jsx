@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "containers/Header";
 
-import "./styles/global.css";
+import "styles/global";
 
 export default class App extends Component {
   render() {
